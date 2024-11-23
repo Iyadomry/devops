@@ -1,0 +1,2 @@
+Project Overview
+This project automates the creation AWS vm instances using Terraform. The infrastructure is modular, with each vm instance defined in separate Terraform modules for better organization and reusability.
