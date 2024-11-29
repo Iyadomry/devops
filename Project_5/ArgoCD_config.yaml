@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: busybox-app
+spec:
+  destination:
+    name: ''
+    namespace: busybox-ns
+    server: https://kubernetes.default.svc
+  source:
+    path: Project_5/busybox
+    repoURL: https://github.com/Iyadomry/devops.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
