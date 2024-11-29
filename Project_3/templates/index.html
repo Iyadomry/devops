@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESXi VM Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ecf0f1;
+        }
+        table {
+            width: auto; /* Compress the table width to fit content */
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+            margin-right: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 4px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        th {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1.1em;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        tr:hover td {
+            background-color: #e2e6ea;
+        }
+        td {
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>ESXi VM Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Guest</th>
+                <th>State</th>
+                <th>IP Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vm in vm_details %}
+            <tr>
+                <td>{{ vm.Name }}</td>
+                <td>{{ vm.Guest }}</td>
+                <td>{{ vm.State }}</td>
+                <td>{{ vm['IP Address'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
