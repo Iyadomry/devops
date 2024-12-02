@@ -7,14 +7,3 @@ Modular Design: Implements separate Terraform modules for each component of the 
 State Management:
 AWS S3 Backend: The Terraform state file is stored in an S3 bucket with versioning enabled, providing a backup mechanism and improved reliability.
 DynamoDB Locking: Utilizes an AWS DynamoDB table for state file locking to ensure consistency during concurrent operations.
-
-
-## dynamodb
-## Create a DynamoDB table to store the Terraform state lock
-```bash
-aws dynamodb create-table     \
---table-name iyad-home-lab     \
---attribute-definitions AttributeName=LockID,AttributeType=S     \
---key-schema AttributeName=LockID,KeyType=HASH     \
---provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
-```

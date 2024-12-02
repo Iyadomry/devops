@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: busybox-app
+  name: jenkins-pv
 spec:
   destination:
     name: ''
-    namespace: busybox-ns
+    namespace: jenkins-ns
     server: https://kubernetes.default.svc
   source:
-    path: Project_5/busybox
+    path: Project_5/jenkins
     repoURL: https://github.com/Iyadomry/devops.git
     targetRevision: HEAD
-    directory:
-      recurse: true
   sources: []
   project: default
   syncPolicy:
     automated:
       prune: false
-      selfHeal: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
