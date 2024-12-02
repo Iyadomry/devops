@@ -1,0 +1,17 @@
+project: default
+source:
+  repoURL: https://github.com/Iyadomry/devops.git
+  path: Project_5/jenkins
+  targetRevision: HEAD
+  directory:
+    recurse: true
+    jsonnet: {}
+destination:
+  server: https://kubernetes.default.svc
+  namespace: jenkins-ns
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
