@@ -10,7 +10,7 @@ def esxi_vms_info():
     si = SmartConnect(
         host='192.168.1.232',
         user='root',
-        pwd='!',
+        pwd='',
         sslContext=context
     )
 
